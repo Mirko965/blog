@@ -1,9 +1,9 @@
 //CONECTION
 <?php
-	define("DB_SERVER", "localhost ");
-	define("DB_USER", "mirkojelic ");
-	define("DB_PASS", "fionfion00 ");
-	define("DB_NAME", "my_blog ");
+	define("DB_SERVER", "");
+	define("DB_USER", "");
+	define("DB_PASS", "");
+	define("DB_NAME", "");
 
   // 1. Create a database connection
   $connection = mysqli_connect(DB_SERVER, DB_USER, DB_PASS, DB_NAME);
