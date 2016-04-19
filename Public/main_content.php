@@ -17,12 +17,14 @@
 ?>
   <body>
     <header>
+      <h1>My Blog</h1>
     </header>
     <article>
       <section class="main">
       </section>
       <aside>
         <nav>
+
         </nav>
       </aside>
     </article>
