@@ -16,4 +16,15 @@
   }
 ?>
   <body>
+    <header>
+    </header>
+    <article>
+      <section class="main">
+      </section>
+      <aside>
+        <nav>
+        </nav>
+      </aside>
+    </article>
+
 <?php include("../include/layout/footer.php"); ?>
