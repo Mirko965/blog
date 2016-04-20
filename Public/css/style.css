@@ -18,7 +18,7 @@ article {
   background-color: beige;
 }
 
-section {
+section.main {
   flex: 3;
   background-color: aqua;
   order: 2;
@@ -43,5 +43,11 @@ footer {
 }
 
 
+/*Navigation*/
 
-
+.writer {
+  list-style: none;
+  line-height: 1.5em;
+  color: black;
+  font-size: 1.2em;
+}
