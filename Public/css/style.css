@@ -51,3 +51,11 @@ footer {
   color: black;
   font-size: 1.2em;
 }
+
+.text {
+  list-style-type: lower-alpha;
+  font-family: monospace;
+  color: crimson;
+  font-size: 1.1em;
+  line-height: 0.9em;
+}
