@@ -15,6 +15,15 @@
     );
   }
 ?>
+
+<?php
+while($writer = mysqli_fetch_assoc($result)){
+?>
+<li><?php echo $writer["writer_name"]; ?></li>
+<?php
+ }
+?>
+
 <?php
 // 5. CLOSE CONECTION
 if(isset($dbconn)){
