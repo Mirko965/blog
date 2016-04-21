@@ -45,17 +45,15 @@ footer {
 
 /*Navigation*/
 
-.writer {
+ul.writer  {
   list-style: none;
-  line-height: 1.5em;
-  color: black;
-  font-size: 1.2em;
 }
 
-.text {
-  list-style-type: lower-alpha;
-  font-family: monospace;
-  color: crimson;
-  font-size: 1.1em;
-  line-height: 0.9em;
+ul.text   {
+  list-style: none;
+  font-weight: normal;
+}
+
+.selected {
+  font-weight: bold;
 }

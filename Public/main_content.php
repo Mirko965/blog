@@ -59,8 +59,14 @@ if(isset($_GET["writer"])){
               <?php
               while($writer = mysqli_fetch_assoc($result)){
               ?>
-               <li>
-                 <a href="main_content.php?writer=<?php echo $writer["writer_name"] ?>"><?php echo $writer["writer_name"] ?></a>
+              <?php
+               echo "<li";
+                if($writer["id"] == $selected_writer_id){
+               echo " class=\"selected\"";
+                }
+               echo ">";
+              ?>
+                 <a href="main_content.php?writer=<?php echo $writer["id"] ?>"><?php echo $writer["writer_name"] ?></a>
                 <ul class="text">
                   <?php
                   $query_text  = "SELECT * " ;
@@ -76,9 +82,15 @@ if(isset($_GET["writer"])){
                   <?php
                   while($text = mysqli_fetch_assoc($result_text)){
                   ?>
-                 <li>
-                   <a href="main_content.php?text=<?php echo $text["content"] ?>"><?php echo $text["headline"] ?></a>
-                 </li>
+                  <?php
+                  echo "<li";
+                    if($text["id"] == $selected_text_id){
+                  echo " class=\"selected\"";
+                    }
+                  echo ">";
+                  ?>
+                   <a href="main_content.php?text=<?php echo $text["id"] ?>"><?php echo $text["headline"] ?></a>
+                  </li>
                   <?php
                    }
                   ?>
