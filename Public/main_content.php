@@ -16,6 +16,18 @@
     );
   }
 ?>
+<?php
+if(isset($_GET["writer"])){
+  $selected_writer_id = $_GET["writer"];
+  $selected_text_id = null;
+} elseif(isset($_GET["text"])) {
+  $selected_text_id = $_GET["text"];
+  $selected_writer_id = null;
+} else {
+  $selected_text_id = null;
+  $selected_writer_id = null;
+}
+?>
   <body>
     <header>
       <h1>My Blog</h1>
@@ -23,6 +35,12 @@
     <article role="combobox">
       <section class="main">
         <h2>Menage Content</h2>
+        <?php
+         echo $selected_writer_id;
+        ?>
+        <?php
+         echo $selected_text_id;
+        ?>
       </section>
       <aside>
         <nav>
@@ -41,7 +59,8 @@
               <?php
               while($writer = mysqli_fetch_assoc($result)){
               ?>
-               <li><?php echo $writer["writer_name"] ?>
+               <li>
+                 <a href="main_content.php?writer=<?php echo $writer["writer_name"] ?>"><?php echo $writer["writer_name"] ?></a>
                 <ul class="text">
                   <?php
                   $query_text  = "SELECT * " ;
@@ -58,7 +77,7 @@
                   while($text = mysqli_fetch_assoc($result_text)){
                   ?>
                  <li>
-                   <?php echo $text["headline"] ?>
+                   <a href="main_content.php?text=<?php echo $text["content"] ?>"><?php echo $text["headline"] ?></a>
                  </li>
                   <?php
                    }
