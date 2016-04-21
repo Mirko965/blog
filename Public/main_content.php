@@ -33,8 +33,15 @@ if(isset($_GET["writer"])){
               <?php
               while($writer = mysqli_fetch_assoc($result)){
               ?>
-              <a href="main_content.php?writer=<?php echo $writer["writer_name"]; ?>">
-              <li><?php echo $writer["writer_name"] ?></a>
+              <?php
+                echo "<li";
+                if($writer["id"] == $selected_writer_id){
+                echo " class=\"selected\"";
+                }
+                echo ">";
+              ?>
+              <a href="main_content.php?writer=<?php echo $writer["id"]; ?>">
+              <?php echo $writer["writer_name"] ?></a>
                 <ul class="text">
                   <?php
                    $result_text = find_text_for_writer($writer["id"])
@@ -42,8 +49,14 @@ if(isset($_GET["writer"])){
                   <?php
                   while($text = mysqli_fetch_assoc($result_text)){
                   ?>
-                   <li>
-                    <a href="main_content.php?text=<?php echo $text["content"] ?>">
+                   <?php
+                      echo "<li";
+                      if($text["id"] == $selected_text_id){
+                      echo " class=\"selected\"";
+                      }
+                      echo ">";
+                   ?>
+                    <a href="main_content.php?text=<?php echo $text["id"] ?>">
                     <?php echo $text["headline"] ?></a>
                    </li>
                    <?php

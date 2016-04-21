@@ -58,12 +58,13 @@ footer {
 }
 
 /*navigation*/
-.writer li{
+ul.writer{
   list-style: none;
 }
-.text  li{
+ul.text{
   list-style: none;
   line-height: 1.5em;
+  font-weight: normal;
 }
 .writer a {
   list-style: none;
@@ -75,6 +76,10 @@ footer {
   list-style: none;
   font-size: .8em;
   text-decoration: none;
+}
+.selected {
+  font-weight: bold;
+  font-size: 110%;
 }
 
 
