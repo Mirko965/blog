@@ -2,14 +2,6 @@
 <?php require_once("../include/function.php"); ?>
 <?php include("../include/layout/header.php"); ?>
 
-<?php
-$query  = "SELECT * " ;
-$query .= "FROM writer ";
-$query .= "WHERE visible = 1 ";
-$query .= "ORDER BY position ASC";
-$result = mysqli_query($dbconn, $query);
-confirm_query($result);
-?>
   <body>
     <header>
       <h1>My Blog</h1>
@@ -20,18 +12,39 @@ confirm_query($result);
       <aside>
         <nav>
           <ul class="writer">
-           <?php
-           while($writer = mysqli_fetch_assoc($result)){
-           ?>
-           <li><?php echo $writer["writer_name"]; ?></li>
-           <?php
+            <?php
+              $result = find_all_writer();
+             ?>
+              <?php
+              while($writer = mysqli_fetch_assoc($result)){
+              ?>
+               <li><?php echo $writer["writer_name"] ?>
+                <ul class="text">
+                  <?php
+                   $result_text = find_text_for_writer($writer["id"])
+                  ?>
+                  <?php
+                  while($text = mysqli_fetch_assoc($result_text)){
+                  ?>
+                 <li>
+                   <?php echo $text["headline"] ?>
+                 </li>
+                  <?php
+                   }
+                  ?>
+                   <?php
+                   mysqli_free_result($result_text);
+                   ?>
+                </ul>
+              </li>
+            <?php
             }
-           ?>
+            ?>
+            <?php
+            mysqli_free_result($result);
+            ?>
           </ul>
         </nav>
       </aside>
     </article>
-<?php
- mysqli_free_result($result);
-?>
 <?php include("../include/layout/footer.php"); ?>

@@ -40,6 +40,9 @@ $query_select_author .= "WHERE visible = 1 ";
 $query_select_author .= "ORDER BY position ASC";
 $result_select_author = mysqli_query($dbconn, $query_select_author);
 confirm_query($result_select_author); //pokazuje error(function confirm_query)
+ /* if(!$result_set){
+    die("Databases failed"); //ovo je isto sto i confirm_query
+ }*/
 ?>
 
 <?php
