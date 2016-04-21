@@ -2,12 +2,27 @@
 <?php require_once("../include/function.php"); ?>
 <?php include("../include/layout/header.php"); ?>
 
+<?php
+if(isset($_GET["writer"])){
+  $selected_writer_id = $_GET["writer"];
+  $selected_text_id = null;
+} elseif(isset($_GET["text"])) {
+  $selected_text_id = $_GET["text"];
+  $selected_writer_id = null;
+} else {
+  $selected_text_id = null;
+  $selected_writer_id = null;
+}
+?>
   <body>
     <header>
       <h1>My Blog</h1>
     </header>
     <article>
       <section class="main">
+        <h2>Menage Content</h2>
+        <div class="writer_headline"><?php echo $selected_writer_id; ?></div>
+        <div class="text_headline"><?php echo $selected_text_id; ?></div>
       </section>
       <aside>
         <nav>
@@ -18,7 +33,7 @@
               <?php
               while($writer = mysqli_fetch_assoc($result)){
               ?>
-               <li><?php echo $writer["writer_name"] ?>
+               <a href="main_content.php?writer=<?php echo $writer["writer_name"]; ?>"><li><?php echo $writer["writer_name"] ?></a>
                 <ul class="text">
                   <?php
                    $result_text = find_text_for_writer($writer["id"])
@@ -27,7 +42,7 @@
                   while($text = mysqli_fetch_assoc($result_text)){
                   ?>
                  <li>
-                   <?php echo $text["headline"] ?>
+                   <a href="main_content.php?text=<?php echo $text["content"] ?>"><?php echo $text["headline"] ?></a>
                  </li>
                   <?php
                    }

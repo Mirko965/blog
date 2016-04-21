@@ -6,24 +6,39 @@ header {
   justify-content: center;
   align-items: center;
   width: 100%;
+  margin-top: -8px;
   height: 130px;
-  background-color: azure;
-  /*position: fixed;*/
+  background-color: rgba(240, 255, 255,0.6);
+  position: fixed;
 }
 
 article {
   display: flex;
   width: 100;
   min-height: 1000px;
-  background-color: beige;
+  padding-top: 130px;
 }
-
+/*Main Section*/
 section {
   flex: 3;
   background-color: aqua;
   order: 2;
   display: flex;
   flex-flow: column;
+}
+section h2{
+  padding-left: 2em;
+}
+.writer_headline {
+  color: black;
+  font-size: 2em;
+  padding-left: 2em;
+}
+
+.text_headline {
+  font-family: sans-serif;
+  padding: 1em;
+  text-indent: 2em;
 }
 
 aside {
@@ -43,10 +58,23 @@ footer {
 }
 
 /*navigation*/
-.writer {
+.writer li{
+  list-style: none;
+}
+.text  li{
   list-style: none;
   line-height: 1.5em;
-  font-size: 1.3em;
+}
+.writer a {
+  list-style: none;
+  line-height: 1.5em;
+  font-size: 1.2em;
+  text-decoration: none;
+}
+.text a {
+  list-style: none;
+  font-size: .8em;
+  text-decoration: none;
 }
 
 
