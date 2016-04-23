@@ -36,13 +36,14 @@ if(isset($_GET["writer"])){
       <section class="main">
         <h2>Menage Content</h2>
 
-          <?php if($selected_writer_id){               ?>
-          <?php   echo $selected_writer_id;            ?>
-          <?php } elseif( $selected_text_id){          ?>
-          <?php   echo $selected_text_id;              ?>
-          <?php } else {                               ?>
-             <p>Please selected writer or text </p>
-          <?php }                                      ?>
+              <?php if($selected_writer_id){               ?>
+              <?php $current_writer = find_writer_id($selected_writer_id);?>
+Writer Name:  <?php   echo $current_writer["writer_name"];            ?>
+              <?php } elseif( $selected_text_id){          ?>
+              <?php   echo $selected_text_id;              ?>
+              <?php } else {                               ?>
+<p>Please selected writer or text </p>
+              <?php }                                      ?>
 
         <?php
          echo $selected_text_id;
