@@ -26,54 +26,9 @@ if(isset($_GET["writer"])){
       </section>
       <aside>
         <nav>
-          <ul class="writer">
-            <?php
-              $result = find_all_writer();
-             ?>
-              <?php
-              while($writer = mysqli_fetch_assoc($result)){
-              ?>
-              <?php
-                echo "<li";
-                if($writer["id"] == $selected_writer_id){
-                echo " class=\"selected\"";
-                }
-                echo ">";
-              ?>
-              <a href="main_content.php?writer=<?php echo $writer["id"]; ?>">
-              <?php echo $writer["writer_name"] ?></a>
-                <ul class="text">
-                  <?php
-                   $result_text = find_text_for_writer($writer["id"])
-                  ?>
-                  <?php
-                  while($text = mysqli_fetch_assoc($result_text)){
-                  ?>
-                   <?php
-                      echo "<li";
-                      if($text["id"] == $selected_text_id){
-                      echo " class=\"selected\"";
-                      }
-                      echo ">";
-                   ?>
-                    <a href="main_content.php?text=<?php echo $text["id"] ?>">
-                    <?php echo $text["headline"] ?></a>
-                   </li>
-                   <?php
-                    }
-                   ?>
-                   <?php
-                   mysqli_free_result($result_text);
-                   ?>
-                </ul>
-              </li>
-            <?php
-            }
-            ?>
-            <?php
-            mysqli_free_result($result);
-            ?>
-          </ul>
+        <?php
+         echo navigation($selected_writer_id,$selected_text_id);
+        ?>
         </nav>
       </aside>
     </article>

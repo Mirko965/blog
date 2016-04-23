@@ -30,4 +30,41 @@ function find_text_for_writer($writer_id){
   confirm_query($result_text);
   return $result_text;
 }
+
+function navigation($selected_writer_id,$selected_text_id){
+   $output = "<ul class=\"writer\">";
+   $result = find_all_writer();
+    while($writer = mysqli_fetch_assoc($result))          {
+    $output .= "<li";
+    if($writer["id"] == $selected_writer_id)              {
+    $output .= " class=\"selected\"";
+}
+    $output .= ">";
+    $output .= "<a href=\"main_content.php?writer=";
+    $output .= $writer["id"];
+    $output .= "\">";
+    $output .= $writer["writer_name"] ;
+    $output .= "</a>";
+
+      $result_text = find_text_for_writer($writer["id"]);
+      $output .= "<ul class=\"text\">";
+        while($text = mysqli_fetch_assoc($result_text))  {
+        $output .= "<li";
+        if($text["id"] == $selected_text_id)             {
+        $output .= " class=\"selected\"";
+}
+        $output .= "\">";
+        $output .= "<a href=\"main_content.php?text=";
+        $output .= $text["id"];
+        $output .= "\">";
+        $output .= $text["headline"];
+        $output .= "</a></li>";
+}
+        mysqli_free_result($result_text);
+        $output .= "</ul></li>";
+}
+     mysqli_free_result($result);
+     $output .= "</ul>";
+     return $output;
+}
 ?>

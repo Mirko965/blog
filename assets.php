@@ -152,14 +152,14 @@ while($author = mysqli_fetch_assoc($result_select_author)){
 //End of Navigation 1
 //NAVIGATION 2
 <?php
-  function navigation($selected_author_id, $selected_pages_id) {
+  function navigation($selected_author_id, $selected_pages_id)   {
     $output = "<ul class=\"author\">";
     $result_select_author = find_all_author();
-    while($author = mysqli_fetch_assoc($result_select_author)){
+    while($author = mysqli_fetch_assoc($result_select_author))   {
       $output .= "<li ";
-      if($author["id"] == $selected_author_id){
+      if($author["id"] == $selected_author_id)                   {
       $output .= "class=\"selected\"";
-       }
+    }
       $output .= ">";
       $output .= "<a href=\"menage_content.php?author=" ;
       $output .= $author["id"] ;
@@ -169,11 +169,11 @@ while($author = mysqli_fetch_assoc($result_select_author)){
 
       $result_select_pages = find_pages_for_author($author["id"]);
       $output .= "<ul class=\"pages\">" ;
-        while($pages = mysqli_fetch_assoc($result_select_pages)){
+        while($pages = mysqli_fetch_assoc($result_select_pages)) {
         $output .= "<li";
-         if($pages["id"] == $selected_pages_id){
+         if($pages["id"] == $selected_pages_id)                  {
         $output .= " class=\"selected\"";
-         }
+    }
         $output .= ">";
         $output .= "<a href=\"menage_content.php?page=" ;
         $output .= $pages["id"] ;
@@ -181,10 +181,10 @@ while($author = mysqli_fetch_assoc($result_select_author)){
         $output .= $pages["title"] ;
         $output .= "</a>" ;
         $output .= "</li>";
-        }
+    }
         mysqli_free_result($result_select_pages);
         $output .= "</ul></li>";
-      }
+    }
       mysqli_free_result($result_select_author);
       $output .= "</ul>";
       return $output;
