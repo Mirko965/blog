@@ -67,4 +67,22 @@ function navigation($selected_writer_id,$selected_text_id){
      $output .= "</ul>";
      return $output;
 }
+
+  function find_author_by_id($writer_id){
+        global $dbconn;
+        $safe_author_id = mysqli_real_escape_string($dbconn,$writer_id);
+
+        $query  = "SELECT * " ;
+        $query .= "FROM writer ";
+        $query .= "WHERE id = {$safe_writer_id} ";
+        $query .= "LIMIT 1";
+        $result = mysqli_query($dbconn, $query);
+        confirm_query($result); //pokazuje error(function confirm_query)
+
+        if ($writer = mysqli_fetch_assoc($result)){
+          return $writer;
+        } else {
+          return null;
+        }
+  }
 ?>
