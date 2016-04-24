@@ -21,8 +21,14 @@ if(isset($_GET["writer"])){
     <article>
       <section class="main">
         <h2>Menage Content</h2>
-        <div class="writer_headline"><?php echo $selected_writer_id; ?></div>
-        <div class="text_headline"><?php echo $selected_text_id; ?></div>
+              <?php if($selected_writer_id){               ?>
+              <?php $current_writer = find_author_by_id($selected_writer_id);?>
+Writer Name:  <?php   echo $current_writer["writer_name"];            ?>
+              <?php } elseif( $selected_text_id){          ?>
+              <?php   echo $selected_text_id;              ?>
+              <?php } else {                               ?>
+<p>Please selected writer or text </p>
+              <?php }                                      ?>
       </section>
       <aside>
         <nav>
