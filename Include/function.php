@@ -68,7 +68,7 @@ function navigation($selected_writer_id,$selected_text_id){
      return $output;
 }
 
-  function find_author_by_id($writer_id){
+  function find_writer_by_id($writer_id){
         global $dbconn;
         $safe_writer_id = mysqli_real_escape_string($dbconn,$writer_id);
 
