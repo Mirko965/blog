@@ -68,7 +68,7 @@ function navigation($writer_array,$text_array){
      return $output;
 }
 
-  function find_writer_by_id($writer_id){
+function find_writer_by_id($writer_id){
         global $dbconn;
         $safe_writer_id = mysqli_real_escape_string($dbconn,$writer_id);
 
@@ -85,7 +85,8 @@ function navigation($writer_array,$text_array){
           return null;
         }
   }
-  function find_text_by_id($text_id){
+
+function find_text_by_id($text_id){
         global $dbconn;
         $safe_text_id = mysqli_real_escape_string($dbconn,$text_id);
 
@@ -102,4 +103,20 @@ function navigation($writer_array,$text_array){
           return null;
         }
   }
+
+function find_selected_writer_or_text(){
+    global $current_writer;
+    global $current_text;
+
+    if(isset($_GET["writer"])){
+      $current_writer = find_writer_by_id($_GET["writer"]);
+      $current_text = null;
+    } elseif(isset($_GET["text"])) {
+      $current_text = find_text_by_id( $_GET["text"]);
+      $current_writer = null;
+    } else {
+      $current_text = null;
+      $current_writer = null;
+    }
+}
 ?>
