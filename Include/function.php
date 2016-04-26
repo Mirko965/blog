@@ -36,7 +36,7 @@ function navigation($writer_array,$text_array){
    $result = find_all_writer();
     while($writer = mysqli_fetch_assoc($result))          {
     $output .= "<li";
-    if($writer_array && $writer["id"] == $writer["id"])              {
+    if($writer_array && $writer["id"] == $writer_array["id"])              {
     $output .= " class=\"selected\"";
 }
     $output .= ">";
@@ -50,7 +50,7 @@ function navigation($writer_array,$text_array){
       $output .= "<ul class=\"text\">";
         while($text = mysqli_fetch_assoc($result_text))  {
         $output .= "<li";
-        if($text_array && $text["id"] == $text["id"])             {
+        if($text_array && $text["id"] == $text_array["id"])             {
         $output .= " class=\"selected\"";
 }
         $output .= "\">";
