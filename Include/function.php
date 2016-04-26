@@ -85,4 +85,21 @@ function navigation($selected_writer_id,$selected_text_id){
           return null;
         }
   }
+  function find_text_by_id($text_id){
+        global $dbconn;
+        $safe_text_id = mysqli_real_escape_string($dbconn,$text_id);
+
+        $query  = "SELECT * " ;
+        $query .= "FROM text ";
+        $query .= "WHERE id = {$safe_text_id} ";
+        $query .= "LIMIT 1";
+        $result_text_id = mysqli_query($dbconn, $query);
+        confirm_query($result_text_id); //pokazuje error(function confirm_query)
+
+        if ($text = mysqli_fetch_assoc($result_text_id)){
+          return $text;
+        } else {
+          return null;
+        }
+  }
 ?>
