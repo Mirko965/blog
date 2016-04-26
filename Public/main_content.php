@@ -2,18 +2,7 @@
 <?php require_once("../include/function.php"); ?>
 <?php include("../include/layout/header.php"); ?>
 
-<?php
-if(isset($_GET["writer"])){
-  $current_writer = find_writer_by_id($_GET["writer"]);
-  $current_text = null;
-} elseif(isset($_GET["text"])) {
-  $current_text = find_text_by_id( $_GET["text"]);
-  $current_writer = null;
-} else {
-  $current_text = null;
-  $current_writer = null;
-}
-?>
+<?php find_selected_writer_or_text(); ?>
   <body>
     <header>
       <h1>My Blog</h1>
