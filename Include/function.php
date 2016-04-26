@@ -31,12 +31,12 @@ function find_text_for_writer($writer_id){
   return $result_text;
 }
 
-function navigation($selected_writer_id,$selected_text_id){
+function navigation($writer,$text){
    $output = "<ul class=\"writer\">";
    $result = find_all_writer();
     while($writer = mysqli_fetch_assoc($result))          {
     $output .= "<li";
-    if($writer["id"] == $selected_writer_id)              {
+    if($writer && $writer["id"] == $writer["id"])              {
     $output .= " class=\"selected\"";
 }
     $output .= ">";
@@ -50,7 +50,7 @@ function navigation($selected_writer_id,$selected_text_id){
       $output .= "<ul class=\"text\">";
         while($text = mysqli_fetch_assoc($result_text))  {
         $output .= "<li";
-        if($text["id"] == $selected_text_id)             {
+        if($text && $text["id"] == $text["id"])             {
         $output .= " class=\"selected\"";
 }
         $output .= "\">";
