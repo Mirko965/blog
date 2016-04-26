@@ -23,6 +23,7 @@ section {
   flex: 3;
   background-color: aqua;
   order: 2;
+  padding-left: 2em;
   display: flex;
   flex-flow: column;
 }
