@@ -36,7 +36,7 @@ if(isset($_GET["writer"])){
       <aside>
         <nav>
         <?php
-         echo navigation($current_writer["id"],$current_text["id"]);
+         echo navigation($current_writer,$current_text);
         ?>
         </nav>
       </aside>
