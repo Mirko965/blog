@@ -27,6 +27,7 @@
         <?php
          echo navigation($current_writer,$current_text);
         ?>
+        <a href="new_writer.php">+ Add new writer</a>
         </nav>
       </aside>
     </article>
