@@ -20,11 +20,12 @@ function find_all_writer(){
 
 function find_text_for_writer($writer_id){
   global $dbconn;
+    $safe_writer_id = mysqli_real_escape_string($dbconn,$writer_id);
 
   $query_text  = "SELECT * " ;
   $query_text .= "FROM text " ;
   $query_text .= "WHERE visible = 1 " ;
-  $query_text .= "AND writer_id = {$writer_id} " ;
+  $query_text .= "AND writer_id = {$safe_writer_id} " ;
   $query_text .= "ORDER BY position ASC";
   $result_text = mysqli_query($dbconn, $query_text);
   confirm_query($result_text);
