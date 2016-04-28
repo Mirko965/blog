@@ -20,13 +20,13 @@ $result = mysqli_query($dbconn, $query);
     </header>
     <article>
       <section class="main">
+          <ul>
+          <?php  while($raw = mysqli_fetch_assoc($result)){ ?>
+             <li><a href=""><?php echo $raw["writer_name"]; ?></a></li>
           <?php
-          while($raw = mysqli_fetch_row($result)){
-              var_dump($raw);
-             //echo "<hr />";
           }
           ?>
-
+          </ul>
 
       </section>
       <aside>
