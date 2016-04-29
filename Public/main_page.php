@@ -25,11 +25,12 @@
         die("Databases failed");
       }
 ?>
-          <ul>
+        <ul>
           <?php  while($writer_raw = mysqli_fetch_assoc($result)){ ?>
-             <li><a href="main_page.php?writer="><?php echo $writer_raw["writer_name"]; ?></a></li>
-             <?php
-             //PERFORM DATABASES QUERY
+             <li>
+                 <ul>
+                 <a href="main_page.php?writer="><?php echo $writer_raw["writer_name"]; ?></a>
+            <?php
              $query  = "SELECT * " ;
              $query .= "FROM text ";
              $query .= "WHERE visible = 1 ";
@@ -39,27 +40,23 @@
                if(!$result_text){
                  die("Databases failed");
                }
-           ?>
-            <?php  while($raw_text = mysqli_fetch_assoc($result_text)){ ?>
-            <li><a href="main_page.php?text="><?php echo $raw_text["headline"]; ?></a></li>
+            ?>
+              <?php  while($raw_text = mysqli_fetch_assoc($result_text)){ ?>
+              <li><a href="main_page.php?text="><?php echo $raw_text["headline"]; ?></a></li>
+              <?php
+              }
+              ?>
           <?php
           }
           ?>
-          <?php
-          }
-          ?>
-          </ul>
 
-          <ul>
-          <?php  while($raw_text = mysqli_fetch_assoc($result_text)){ ?>
-             <li><a href="main_page.php?text="><?php echo $raw_text["headline"]; ?></a></li>
-          <?php
-          }
-          ?>
-                  <?php
-      mysqli_free_result($result_text);
-      ?>
-          </ul>
+
+            </li>
+            </ul>
+            <?php
+             mysqli_free_result($result_text);
+            ?>
+            </ul>
         </nav>
       </aside>
     </article>
