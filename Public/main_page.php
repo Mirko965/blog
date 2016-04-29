@@ -31,26 +31,14 @@ if(isset($_GET["writer"])){
         <nav>
         <ul class="writer_nav">
          <?php
-            //PERFORM DATABASES QUERY
-            $query  = "SELECT * " ;
-            $query .= "FROM writer ";
-            $query .= "WHERE visible = 1 ";
-            $query .= "ORDER BY position ASC";
-            $result_writer = mysqli_query($dbconn, $query);
-            confirm_query($result_writer) ;
+         $result_writer = find_all_writer();
          ?>
             <?php  while($writer_raw = mysqli_fetch_assoc($result_writer)){ ?>
             <li>
                <a href="main_page.php?writer=<?php echo $writer_raw["id"]; ?>"><?php echo $writer_raw["writer_name"]; ?></a>
                <?php
-                $query  = "SELECT * " ;
-                $query .= "FROM text ";
-                $query .= "WHERE visible = 1 ";
-                $query .= "AND writer_id = {$writer_raw["id"]} ";
-                $query .= "ORDER BY position ASC";
-                $result_text = mysqli_query($dbconn, $query);
-                confirm_query($result_text);
-            ?>
+                $result_text = find_text_for_writer($writer_raw["id"])
+               ?>
                 <ul class="text_nav">
                   <?php  while($raw_text = mysqli_fetch_assoc($result_text)){ ?>
                 <li>
