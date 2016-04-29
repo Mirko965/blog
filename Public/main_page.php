@@ -2,15 +2,30 @@
 <?php require_once("../include/function.php"); ?>
 <?php include("../include/layout/header.php"); ?>
 
-
+<?php
+if(isset($_GET["writer"])){
+    $selected_writer = $_GET["writer"];
+    $selected_text = null;
+}elseif($_GET["text"]){
+    $selected_text = $_GET["text"];
+    $selected_writer = null;
+}else{
+    $selected_writer = null;
+    $selected_text = null;
+}
+?>
   <body>
     <header>
       <h1>My Blog</h1>
     </header>
     <article>
       <section class="main">
-
-
+      <?php
+          echo $selected_writer;
+      ?>
+      <?php
+          echo $selected_text;
+      ?>
       </section>
       <aside>
         <nav>
@@ -28,7 +43,7 @@
          ?>
             <?php  while($writer_raw = mysqli_fetch_assoc($result)){ ?>
             <li>
-               <a href="main_page.php?writer="><?php echo $writer_raw["writer_name"]; ?></a>
+               <a href="main_page.php?writer=<?php echo $writer_raw["id"]; ?>"><?php echo $writer_raw["writer_name"]; ?></a>
                <?php
                 $query  = "SELECT * " ;
                 $query .= "FROM text ";
@@ -43,7 +58,7 @@
                 <ul class="text_nav">
                   <?php  while($raw_text = mysqli_fetch_assoc($result_text)){ ?>
                 <li>
-                    <a href="main_page.php?text="><?php echo $raw_text["headline"]; ?></a>
+                    <a href="main_page.php?text=<?php echo $raw_text["id"]; ?>"><?php echo $raw_text["headline"]; ?></a>
                 </li>
                 <?php
                 }
