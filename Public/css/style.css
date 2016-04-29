@@ -48,6 +48,7 @@ aside {
   order: 1;
   display: flex;
   flex-flow: column;
+    padding: 0.5em
 }
 
 footer {
@@ -59,25 +60,29 @@ footer {
 }
 
 /*navigation*/
-ul.writer{
+ul.writer_nav li a {
   list-style: none;
+  line-height: 1.5em;
+  font-size: 1.3em;
+  text-decoration: none;
 }
-ul.text{
+ul.text_nav li a {
+  list-style: none;
+  font-size: 0.8em;
+  text-decoration: none;
+}
+ul.writer_nav{
+  list-style: none;
+    padding-left: 0;
+}
+
+ul.text_nav{
   list-style: none;
   line-height: 1.5em;
   font-weight: normal;
+    padding-left: 0;
 }
-.writer a {
-  list-style: none;
-  line-height: 1.5em;
-  font-size: 1.2em;
-  text-decoration: none;
-}
-.text a {
-  list-style: none;
-  font-size: .8em;
-  text-decoration: none;
-}
+
 .selected {
   font-weight: bold;
   font-size: 110%;
