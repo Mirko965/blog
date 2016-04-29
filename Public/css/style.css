@@ -60,13 +60,13 @@ footer {
 }
 
 /*navigation*/
-ul.writer_nav li a {
+ul.writer_nav a {
   list-style: none;
   line-height: 1.5em;
   font-size: 1.3em;
   text-decoration: none;
 }
-ul.text_nav li a {
+ul.text_nav a {
   list-style: none;
   font-size: 0.8em;
   text-decoration: none;
