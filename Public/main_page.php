@@ -26,23 +26,30 @@
       }
 ?>
           <ul>
-          <?php  while($raw = mysqli_fetch_assoc($result)){ ?>
-             <li><a href="main_page.php?writer="><?php echo $raw["writer_name"]; ?></a></li>
+          <?php  while($writer_raw = mysqli_fetch_assoc($result)){ ?>
+             <li><a href="main_page.php?writer="><?php echo $writer_raw["writer_name"]; ?></a></li>
+             <?php
+             //PERFORM DATABASES QUERY
+             $query  = "SELECT * " ;
+             $query .= "FROM text ";
+             $query .= "WHERE visible = 1 ";
+             $query .= "AND writer_id = {$writer_raw["id"]} ";
+             $query .= "ORDER BY position ASC";
+             $result_text = mysqli_query($dbconn, $query);
+               if(!$result_text){
+                 die("Databases failed");
+               }
+           ?>
+            <?php  while($raw_text = mysqli_fetch_assoc($result_text)){ ?>
+            <li><a href="main_page.php?text="><?php echo $raw_text["headline"]; ?></a></li>
+          <?php
+          }
+          ?>
           <?php
           }
           ?>
           </ul>
-<?php
-    //PERFORM DATABASES QUERY
-    $query  = "SELECT * " ;
-    $query .= "FROM text ";
-    $query .= "WHERE writer_id = 3 ";
-    $query .= "LIMIT 4";
-    $result_text = mysqli_query($dbconn, $query);
-      if(!$result_text){
-        die("Databases failed");
-      }
-?>
+
           <ul>
           <?php  while($raw_text = mysqli_fetch_assoc($result_text)){ ?>
              <li><a href="main_page.php?text="><?php echo $raw_text["headline"]; ?></a></li>
