@@ -37,9 +37,7 @@ if(isset($_GET["writer"])){
             $query .= "WHERE visible = 1 ";
             $query .= "ORDER BY position ASC";
             $result_writer = mysqli_query($dbconn, $query);
-              if(!$result_writer){
-                die("Databases failed");
-              }
+            confirm_query($result_writer) ;
          ?>
             <?php  while($writer_raw = mysqli_fetch_assoc($result_writer)){ ?>
             <li>
@@ -51,9 +49,7 @@ if(isset($_GET["writer"])){
                 $query .= "AND writer_id = {$writer_raw["id"]} ";
                 $query .= "ORDER BY position ASC";
                 $result_text = mysqli_query($dbconn, $query);
-                  if(!$result_text){
-                    die("Databases failed");
-                  }
+                confirm_query($result_text);
             ?>
                 <ul class="text_nav">
                   <?php  while($raw_text = mysqli_fetch_assoc($result_text)){ ?>
