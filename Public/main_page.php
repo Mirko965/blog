@@ -36,12 +36,12 @@ if(isset($_GET["writer"])){
             $query .= "FROM writer ";
             $query .= "WHERE visible = 1 ";
             $query .= "ORDER BY position ASC";
-            $result = mysqli_query($dbconn, $query);
-              if(!$result){
+            $result_writer = mysqli_query($dbconn, $query);
+              if(!$result_writer){
                 die("Databases failed");
               }
          ?>
-            <?php  while($writer_raw = mysqli_fetch_assoc($result)){ ?>
+            <?php  while($writer_raw = mysqli_fetch_assoc($result_writer)){ ?>
             <li>
                <a href="main_page.php?writer=<?php echo $writer_raw["id"]; ?>"><?php echo $writer_raw["writer_name"]; ?></a>
                <?php
@@ -72,13 +72,10 @@ if(isset($_GET["writer"])){
               }
             ?>
             <?php
-            mysqli_free_result($result);
+            mysqli_free_result($result_writer);
             ?>
         </ul>
         </nav>
       </aside>
     </article>
-     <?php
-      mysqli_free_result($result);
-      ?>
 <?php include("../include/layout/footer.php"); ?>
