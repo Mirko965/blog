@@ -6,7 +6,7 @@
 if(isset($_GET["writer"])){
     $selected_writer = $_GET["writer"];
     $selected_text = null;
-}elseif($_GET["text"]){
+}elseif(isset($_GET["text"])){
     $selected_text = $_GET["text"];
     $selected_writer = null;
 }else{
@@ -20,6 +20,7 @@ if(isset($_GET["writer"])){
     </header>
     <article>
       <section class="main">
+          <h2>Menage content</h2>
       <?php
           echo $selected_writer;
       ?>
@@ -34,7 +35,13 @@ if(isset($_GET["writer"])){
          $result_writer = find_all_writer();
          ?>
             <?php  while($writer_raw = mysqli_fetch_assoc($result_writer)){ ?>
-            <li>
+            <?php
+            echo "<li";
+              if($writer_raw["id"] == $selected_writer){
+            echo "class=\"selected\"";
+              }
+            echo ">";
+            ?>
                <a href="main_page.php?writer=<?php echo $writer_raw["id"]; ?>"><?php echo $writer_raw["writer_name"]; ?></a>
                <?php
                 $result_text = find_text_for_writer($writer_raw["id"])

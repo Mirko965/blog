@@ -60,34 +60,29 @@ footer {
 }
 
 /*navigation*/
-ul.writer_nav a {
-  list-style: none;
-  line-height: 1.5em;
-  font-size: 1.3em;
-  text-decoration: none;
-}
-ul.text_nav a {
-  list-style: none;
-  font-size: 0.8em;
-  text-decoration: none;
-}
-ul.writer_nav{
-  list-style: none;
+nav{
+	margin: 0;
     padding-left: 0;
 }
-
-ul.text_nav{
-  list-style: none;
-  line-height: 1.5em;
-  font-weight: normal;
-    padding-left: 0;
+nav a {
+    text-decoration: none;
 }
-
+#navigation a:hover {
+    color: #ce2020;
+}
+ul.writer_nav {
+	margin: 1em 0;
+    padding-left: 0;
+    list-style: none;
+}
+ul.text_nav {
+    padding-left: 1em;
+    list-style: square;
+    font-weight: normal;
+}
 .selected {
-  font-weight: bold;
-  font-size: 110%;
+    font-weight: bold;
 }
-
 
 
 
