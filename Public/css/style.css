@@ -70,12 +70,12 @@ nav a {
 #navigation a:hover {
     color: #ce2020;
 }
-ul.writer_nav {
+.writer_nav {
 	margin: 1em 0;
     padding-left: 0;
     list-style: none;
 }
-ul.text_nav {
+.text_nav {
     padding-left: 1em;
     list-style: square;
     font-weight: normal;
