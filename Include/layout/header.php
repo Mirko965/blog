@@ -5,6 +5,12 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Main Content</title>
+    <title>My Site</title>
     <link rel="stylesheet" href="css/style.css">
   </head>
+  <body>
+    <header id="header">
+      <h1>PHP </h1>
+      <img src="images/elephpant.png">
+      <h1>MYSQL</h1>
+    </header>

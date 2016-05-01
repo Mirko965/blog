@@ -2,15 +2,12 @@
 <?php require_once("../include/function.php"); ?>
 <?php include("../include/layout/header.php"); ?>
 
-  <body>
-    <header>
-      <h1>My Blog</h1>
-    </header>
-    <article>
-      <section class="main">
+
+    <article class="main">
+      <section class="content">
 
       </section>
-      <aside>
+      <aside role="navigation" id="navigation">
         <nav>
 
         </nav>
