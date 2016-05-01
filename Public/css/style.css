@@ -61,12 +61,12 @@ img {
 #navigation a:hover {
   margin-right:2px;
 }
-ul.author {
+ul.writer {
   margin: 1em 0;
   padding-left: 1em;;
   list-style: none;
 }
-ul.pages {
+ul.text {
   padding-left: 1em;
   list-style: none;
   font-weight: normal;
