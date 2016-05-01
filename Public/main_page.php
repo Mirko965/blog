@@ -25,7 +25,7 @@ if(isset($_GET["writer"])){
         ?>
             <ul class="writer">
             <?php while($writer_raw = mysqli_fetch_assoc($result_select_writer)){ ?>
-            <li>
+            <li class="selected">
                 <a href="main_page.php?writer=<?php echo $writer_raw["id"]; ?>" ?><?php echo $writer_raw["writer_name"]; ?></a>
                 <ul class="text">
                     <?php
