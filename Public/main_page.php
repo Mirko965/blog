@@ -27,13 +27,13 @@ if(isset($_GET["writer"])){
             <?php
             while($writer_raw = mysqli_fetch_assoc($result_select_writer)){
             ?>
-                   <?php
-                   echo "<li ";
-                    if($writer_raw["id"] == $selected_writer_id){
-                   echo "class=\"selected\"";
-                    }
-                   echo ">";
-                   ?>
+            <?php
+            echo "<li ";
+             if($writer_raw["id"] == $selected_writer_id){
+            echo "class=\"selected\"";
+             }
+            echo ">";
+            ?>
                 <a href="main_page.php?writer=<?php echo $writer_raw["id"]; ?>">
                 <?php echo $writer_raw["writer_name"]; ?></a>
                 <ul class="text">
@@ -43,16 +43,16 @@ if(isset($_GET["writer"])){
                       <?php
                       while($text_raw = mysqli_fetch_assoc($result_select_text)) {
                       ?>
-                     <?php
-                     echo "<li ";
-                      if($text_raw["id"] == $selected_text_id){
-                     echo "class=\"selected\"";
-                      }
-                     echo ">";
-                     ?>
-                    <a href="main_page.php?text=<?php echo $text_raw["id"];?>">
-                    <?php echo $text_raw["headline"]; ?></a>
-                    </li>
+                       <?php
+                       echo "<li ";
+                        if($text_raw["id"] == $selected_text_id){
+                       echo "class=\"selected\"";
+                        }
+                       echo ">";
+                       ?>
+                      <a href="main_page.php?text=<?php echo $text_raw["id"];?>">
+                      <?php echo $text_raw["headline"]; ?></a>
+                      </li>
                     <?php
                     }
                     ?>
