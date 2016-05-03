@@ -15,17 +15,27 @@ if(isset($_GET["writer"])){
 }
 ?>
     <article class="main">
-      <section class="content">
-        <h2>Menage content</h2>
-          <?php echo $selected_writer_id ?>
-          <?php echo $selected_text_id ?>
-      </section>
-      <aside role="navigation" id="navigation">
-        <nav>
+        <section class="content">
+           <h2>Menage content</h2>
+
+            <?php if($selected_writer_id){ ?>
+            <?php   $current_writer = find_writer_by_id($selected_writer_id); ?>
+            <p>Writer Name :
+            <?php   echo $current_writer["writer_name"]; ?>
+            </p>
+            <?php }elseif($selected_text_id){ ?>
+            <?php   echo $selected_text_id; ?>
+            <?php }else{ ?>
+            <p> Please select writer or text!</p>
+            <?php } ?>
+
+        </section>
+          <aside role="navigation" id="navigation">
+            <nav>
             <?php
                 echo navigation($selected_writer_id,$selected_text_id)
              ?>
-        </nav>
-      </aside>
+            </nav>
+          </aside>
     </article>
 <?php include("../include/layout/footer.php"); ?>
