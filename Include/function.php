@@ -50,6 +50,22 @@ function find_text_by_writer_id($writer_id){
     return($result_select_text);
 }
 
+function find_text_by_id($text_id){
+    global $dbconn;
+
+    $query_select_text  = "SELECT * " ;
+    $query_select_text .= "FROM text ";
+    $query_select_text .= "WHERE id = {$text_id} ";
+    $query_select_text .= "LIMIT 1";
+    $result_select_text = mysqli_query($dbconn, $query_select_text);
+    confirm_query($result_select_text);
+    if($text = mysqli_fetch_assoc($result_select_text)){
+        return $text;
+    } else {
+        null;
+    }
+}
+
 function navigation($writer_id,$text_id){
             $output = "<ul class=\"writer\">" ;
             $result_select_writer = find_all_writer();
