@@ -16,14 +16,15 @@ if(isset($_GET["writer"])){
 ?>
     <article class="main">
         <section class="content">
-           <h2>Menage content</h2>
 
             <?php if($selected_writer_id){ ?>
+            <h2>Menage writer</h2>
             <?php   $current_writer = find_writer_by_id($selected_writer_id); ?>
             <p>Writer Name :
             <?php   echo $current_writer["writer_name"];?>
             </p>
             <?php }elseif($selected_text_id){ ?>
+            <h2>Menage Page</h2>
             <?php $current_text = find_text_by_id($selected_text_id) ?>
             <P>Headline :
             <?php   echo $current_text["headline"]; ?>
