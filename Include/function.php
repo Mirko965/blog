@@ -52,7 +52,6 @@ function navigation($writer_id,$text_id){
                     $output .= "class=\"selected\"";
                     }
                     $output .= ">";
-
                     $output .= "<a href=\"main_page.php?text=";
                     $output .= $text_raw["id"];
                     $output .= "\">";
