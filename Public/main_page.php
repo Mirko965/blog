@@ -21,7 +21,7 @@ if(isset($_GET["writer"])){
             <?php if($selected_writer_id){ ?>
             <?php   $current_writer = find_writer_by_id($selected_writer_id); ?>
             <p>Writer Name :
-            <?php   echo $current_writer["writer_name"],$current_text["headline"]; ?>
+            <?php   echo $current_writer["writer_name"];?>
             </p>
             <?php }elseif($selected_text_id){ ?>
             <?php $current_text = find_text_by_id($selected_text_id) ?>
