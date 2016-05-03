@@ -16,7 +16,9 @@ if(isset($_GET["writer"])){
 ?>
     <article class="main">
       <section class="content">
-
+        <h2>Menage content</h2>
+          <?php echo $selected_writer_id ?>
+          <?php echo $selected_text_id ?>
       </section>
       <aside role="navigation" id="navigation">
         <nav>
