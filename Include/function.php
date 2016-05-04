@@ -66,12 +66,29 @@ function find_text_by_id($text_id){
     }
 }
 
-function navigation($writer_id,$text_id){
+function find_selected_text(){
+    global $current_writer;
+    global $current_text;
+
+  if(isset($_GET["writer"])){
+    $current_writer = find_writer_by_id($_GET["writer"]);
+    $current_text = null;
+}elseif(isset($_GET["text"])){
+    $current_text = find_text_by_id($_GET["text"]);
+    $current_writer = null;
+}else{
+    $current_writer = null;
+    $current_text = null;
+}
+
+}
+
+function navigation($writer_array,$text_array){
             $output = "<ul class=\"writer\">" ;
             $result_select_writer = find_all_writer();
             while($writer_raw = mysqli_fetch_assoc($result_select_writer)){
             $output .= "<li ";
-             if($writer_raw["id"] == $writer_id){
+             if($writer_array && $writer_raw["id"] == $writer_array["id"]){
             $output .= "class=\"selected\"";
              }
             $output .= ">";
@@ -84,7 +101,7 @@ function navigation($writer_id,$text_id){
                 $result_select_text = find_text_by_writer_id($writer_raw["id"]);
                     while($text_raw = mysqli_fetch_assoc($result_select_text)) {
                     $output .= "<li ";
-                    if($text_raw["id"] == $text_id){
+                    if($text_array && $text_raw["id"] == $text_array["id"]){
                     $output .= "class=\"selected\"";
                     }
                     $output .= ">";
