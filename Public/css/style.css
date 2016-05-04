@@ -65,10 +65,12 @@ ul.writer {
   margin:1em 0;
   padding-left: 0;;
   list-style: none;
+    font-size: 1.3em;
 }
 ul.text {
   padding-left: 1em;
   list-style: none;
+    font-size: 0.6em;
   font-weight: normal;
 }
 .selected {
