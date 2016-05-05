@@ -21,10 +21,10 @@
                 </select>
             </p>
             <p>Visible:
-                <input type="radio" name="visible" value="1">Yes
-                <input type="radio" name="visible" value="0">No
+                <input type="radio" name="visible" value="1" />Yes
+                <input type="radio" name="visible" value="0" />No
             </p>
-            <input type="submit" name="submit" value="create new writer"
+            <input type="submit" name="submit" value="create new writer" />
         </form>
             <br>
             <p><a href="main_page.php">Cancel</a></p>
