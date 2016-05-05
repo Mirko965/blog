@@ -2,7 +2,7 @@
   // 1. Create a database connection
   $dbhost = "localhost";
   $dbuser = "widget_cms";
-  $dbpass = "secretpassword";
+  $dbpass = "fionfion";
   $dbname = "widget_corp";
   $connection = mysqli_connect($dbhost, $dbuser, $dbpass, $dbname);
   // Test if connection succeeded
