@@ -4,6 +4,12 @@ function redirect_to($new_location) {
 		exit;
 	}
 
+function mysql_prep($string){
+    global $dbconn;
+    $escape_string = mysqli_real_escape_string($dbconn, $string);
+    return $escape_string;
+}
+
 function confirm_query($result_set){
     if(!$result_set){
     die("Databases failed");
