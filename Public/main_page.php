@@ -1,10 +1,13 @@
+<?php require_once("../include/session.php"); ?>
 <?php require_once("../include/db_connection.php"); ?>
 <?php require_once("../include/function.php"); ?>
 <?php include("../include/layout/header.php"); ?>
 <?php find_selected_text(); ?>
     <article class="main">
         <section class="content">
-
+            <?php
+            echo message();
+            ?>
             <?php if($current_writer){ ?>
             <h2>Menage writer</h2>
             <p>Writer Name :

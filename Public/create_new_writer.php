@@ -1,3 +1,4 @@
+<?php require_once("../include/session.php"); ?>
 <?php require_once("../include/db_connection.php"); ?>
 <?php require_once("../include/function.php"); ?>
 
@@ -15,10 +16,10 @@ if (isset($_POST['submit'])) {
 	$result = mysqli_query($dbconn, $query);
 
 	if ($result) {
-        $message = "Writer created";
+        $_SESSION["message"] = "Writer created";
 		redirect_to("main_page.php");
 	} else {
-		 $message = "Writer creation failed";
+		 $_SESSION["message"] = "Writer creation failed";
 		redirect_to("new_writer.php");
 	}
     } else {
