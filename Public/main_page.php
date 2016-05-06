@@ -19,7 +19,7 @@
             <?php   echo $current_text["headline"]; ?>
             </P>
             <?php }else{ ?>
-            <h2>Menage content</h2>
+            <!--<h2>Menage content</h2>-->
             <p> Please select writer or text!</p>
             <?php } ?>
 
