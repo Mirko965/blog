@@ -3,7 +3,6 @@
 <?php require_once("../include/function.php"); ?>
 <?php require_once("../include/validation_function.php"); ?>
 <?php find_selected_text(); ?>
-<?php include("../include/layout/header.php"); ?>
 <?php
 if(!$current_writer){
     redirect_to("main_page.php");
@@ -19,21 +18,20 @@ if (isset($_POST['submit'])) {
     validate_max_lengths($fields_with_max_lengths);
 
     if(empty($errors)){
+       $id = $current_writer["id"];
+	   $writer_name = mysql_prep($_POST["writer_name"]);
+	   $position = (int) $_POST["position"];
+	   $visible = (int) $_POST["visible"];
 
-    $id = $current_writer["id"];
-	$writer_name = mysql_prep($_POST["writer_name"]);
-	$position = (int) $_POST["position"];
-	$visible = (int) $_POST["visible"];
+	   $query  = "UPDATE writer SET ";
+	   $query .= "writer_name = '{$writer_name}', ";
+       $query .= "position = {$position}, ";
+       $query .= "visible = {$visible}  ";
+	   $query .= "WHERE id = {$id} ";
+	   $query .= "LIMIT 1";
+	   $result = mysqli_query($dbconn, $query);
 
-	$query  = "UPDATE writer SET (";
-	$query .= "writer_name = '{$writer_name}', ";
-    $query .= "position = {$position}, ";
-    $query .= "visible = {$visible}  ";
-	$query .= "WHERE id = {$id} ";
-	$query .= "LIMIT 1";
-	$result = mysqli_query($dbconn, $query);
-
-	if ($result && mysqli_affected_rows($dbconn)) {
+	if ($result && mysqli_affected_rows($dbconn) == 1) {
         $_SESSION["message"] = "Writer updated";
 		redirect_to("main_page.php");
 	} else {
@@ -44,12 +42,13 @@ if (isset($_POST['submit'])) {
 
     }
 ?>
+<?php include("../include/layout/header.php"); ?>
 
     <article class="main">
         <section class="content">
         <?php
             if(!empty($message)){
-                echo "<div class=\"message\"". $message . "</div>";
+                echo "<div class=\"message\">". $message . "</div>";
             }
         ?>
         <?php echo form_errors($errors) ; ?>
@@ -93,3 +92,7 @@ if (isset($_POST['submit'])) {
           </aside>
     </article>
 <?php include("../include/layout/footer.php"); ?>
+
+
+
+
