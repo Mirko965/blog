@@ -6,12 +6,15 @@
     <article class="main">
         <section class="content">
         <?php echo message(); ?>
+        <?php $errors = errors(); ?>
+        <?php echo form_errors($errors) ; ?>
+
         <form action="create_new_writer.php" method="post">
             <p>Writer name:
-                <input type="text" name="writer_name" value="" required >
+                <input type="text" name="writer_name" value=""  >
             </p>
             <p>Position:
-                <select name="position" required>
+                <select name="position" >
                     <?php
                     $writer_number = find_all_writer();
                     $writer_count = mysqli_num_rows($writer_number);
@@ -22,8 +25,8 @@
                 </select>
             </p>
             <p>Visible:
-                <input type="radio" name="visible" value="1" required />Yes
-                <input type="radio" name="visible" value="0" required />No
+                <input type="radio" name="visible" value="1"  />Yes
+                <input type="radio" name="visible" value="0"  />No
             </p>
             <input type="submit" name="submit" value="create new writer" />
         </form>
