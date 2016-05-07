@@ -1,6 +1,7 @@
 <?php require_once("../include/session.php"); ?>
 <?php require_once("../include/db_connection.php"); ?>
 <?php require_once("../include/function.php"); ?>
+<?php require_once("../include/validation_function.php"); ?>
 <?php find_selected_text(); ?>
 <?php include("../include/layout/header.php"); ?>
 <?php
@@ -8,15 +9,53 @@ if(!$current_writer){
     redirect_to("main_page.php");
 }
 ?>
+<?php
+if (isset($_POST['submit'])) {
+
+    $required_fields = array("writer_name","position","visible");
+    validate_presences($required_fields);
+
+    $fields_with_max_lengths = array("writer_name" => 30);
+    validate_max_lengths($fields_with_max_lengths);
+
+    if(empty($errors)){
+
+    $id = $current_writer["id"];
+	$writer_name = mysql_prep($_POST["writer_name"]);
+	$position = (int) $_POST["position"];
+	$visible = (int) $_POST["visible"];
+
+	$query  = "UPDATE writer SET (";
+	$query .= "writer_name = '{$writer_name}', ";
+    $query .= "position = {$position}, ";
+    $query .= "visible = {$visible}  ";
+	$query .= "WHERE id = {$id} ";
+	$query .= "LIMIT 1";
+	$result = mysqli_query($dbconn, $query);
+
+	if ($result && mysqli_affected_rows($dbconn)) {
+        $_SESSION["message"] = "Writer updated";
+		redirect_to("main_page.php");
+	} else {
+		$message = "Writer update failed";
+	}
+    }
+    } else {
+
+    }
+?>
 
     <article class="main">
         <section class="content">
-        <?php echo message(); ?>
-        <?php $errors = errors(); ?>
+        <?php
+            if(!empty($message)){
+                echo "<div class=\"message\"". $message . "</div>";
+            }
+        ?>
         <?php echo form_errors($errors) ; ?>
 
         <h2>Edit writer:<?php echo $current_writer["writer_name"];?></h2>
-        <form action="create_new_writer.php" method="post">
+        <form action="edit_writer.php?writer=<?php echo $current_writer["id"]?>" method="post">
             <p>Writer name:
                 <input type="text" name="writer_name" value="<?php echo $current_writer["writer_name"]?>">
             </p>
