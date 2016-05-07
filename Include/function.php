@@ -10,6 +10,21 @@ function mysql_prep($string){
     return $escape_string;
 }
 
+function form_errors($errors=array()) {
+	$output = "";
+	if (!empty($errors)) {
+	  $output .= "<div class=\"error\">";
+	  $output .= "Please fix the following errors:";
+	  $output .= "<ul>";
+	  foreach ($errors as $key => $error) {
+	    $output .= "<li>{$error}</li>";
+	  }
+	  $output .= "</ul>";
+	  $output .= "</div>";
+	}
+	return $output;
+}
+
 function confirm_query($result_set){
     if(!$result_set){
     die("Databases failed");
