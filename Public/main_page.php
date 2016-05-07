@@ -10,9 +10,9 @@
             ?>
             <?php if($current_writer){ ?>
             <h2>Menage writer</h2>
-            <p>Writer Name :
-            <?php   echo $current_writer["writer_name"];?>
-            </p>
+            <p>Writer Name :<?php   echo $current_writer["writer_name"];?></p>
+            <a href="edit_writer.php?writer=<?php echo $current_writer["id"]?>">Edit Writer</a>
+
             <?php }elseif($current_text){ ?>
             <h2>Menage Page</h2>
             <P>Headline :
@@ -22,6 +22,7 @@
             <!--<h2>Menage content</h2>-->
             <p> Please select writer or text!</p>
             <?php } ?>
+
 
         </section>
           <aside role="navigation" id="navigation">
