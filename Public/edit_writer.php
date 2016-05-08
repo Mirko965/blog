@@ -81,6 +81,7 @@ if (isset($_POST['submit'])) {
         </form>
             <br>
             <p><a href="main_page.php">Cancel</a></p>
+            <p><a href="deleted_writer.php?writer=<?php echo $current_writer["id"];?>">Delete Writer</a></p>
 
         </section>
           <aside role="navigation" id="navigation">
