@@ -18,6 +18,22 @@
                  </ul>
             <p><a href="edit_writer.php?writer=<?php echo $current_writer["id"]?>">Edit Writer</a></p>
             </div>
+            <div class="show_text">
+                <h3>Text in this writer</h3>
+                <ul>
+                <?php
+                $writer_text = find_text_by_writer_id($current_writer["id"]);
+                while($text = mysqli_fetch_assoc($writer_text)){
+                    echo "<li>";
+                    $safe_text_id = $text["id"];
+                    echo "<a href=\"main_page.php?text={$safe_text_id}\">";
+                    echo $text["headline"];
+                    echo "</a>";
+                    echo "</li>";
+                }
+                ?>
+                </ul>
+            </div>
             <?php }elseif($current_text){ ?>
             <h2>Menage Page</h2>
             <P>Headline :
