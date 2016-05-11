@@ -16,9 +16,9 @@
             <p>Position:
                 <select name="position" >
                     <?php
-                    $writer_number = find_all_writer();
-                    $writer_count = mysqli_num_rows($writer_number);
-                    for($count = 1; $count <= ($writer_count + 1); $count++){
+                    $text_number = find_text_by_writer_id($text["id"]);
+                    $text_count = mysqli_num_rows($text_number);
+                    for($count = 1; $count <= ($text_count + 1); $count++){
                       echo  "<option value=\"{$count}\">{$count}</option>";
                     }
                     ?>
@@ -29,7 +29,7 @@
                 <input type="radio" name="visible" value="0"  />No
             </p>
             <p>Content:
-            <textarea name="textarea" rows="10" cols="50">Write something here</textarea>
+            <textarea name="textarea" rows="20" cols="85">Write something here</textarea>
             </p>
             <input type="submit" name="submit" value="create text" />
         </form>
