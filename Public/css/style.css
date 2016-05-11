@@ -38,11 +38,24 @@ img {
     flex-direction: column;
     align-self: flex-start;
     align-items: center;
-    border: 1px solid black;
 }
 .show_writer ul{
     list-style: none;
     padding: 1em;
+    color: firebrick;
+}
+.show_text{
+    display: flex;
+    flex-direction: column;
+    align-self: flex-start;
+    align-items: flex-start;
+}
+.show_text ul{
+    list-style: none;
+    padding: 1em;
+    color: firebrick;
+}
+.show_text ul a{
     color: firebrick;
 }
 /*Message(Session)*/
