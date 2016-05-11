@@ -10,13 +10,18 @@
             ?>
             <?php if($current_writer){ ?>
             <h2>Menage writer</h2>
-            <p>Writer Name :<?php   echo $current_writer["writer_name"];?></p>
-            <a href="edit_writer.php?writer=<?php echo $current_writer["id"]?>">Edit Writer</a>
-
+             <div class="show_writer">
+                 <ul>
+                     <li>Writer Name :<?php   echo $current_writer["writer_name"];?></li>
+                     <li>Writer Position :<?php   echo $current_writer["position"];?></li>
+                     <li>Writer Visible :<?php   echo $current_writer["visible"] == 1 ? 'yes':'no'; ?></li>
+                 </ul>
+            <p><a href="edit_writer.php?writer=<?php echo $current_writer["id"]?>">Edit Writer</a></p>
+            </div>
             <?php }elseif($current_text){ ?>
             <h2>Menage Page</h2>
             <P>Headline :
-            <?php   echo $current_text["headline"]; ?>
+            <?php   echo $current_text["content"]; ?>
             </P>
             <?php }else{ ?>
             <!--<h2>Menage content</h2>-->
