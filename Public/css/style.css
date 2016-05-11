@@ -30,8 +30,20 @@ img {
   font-size: 1em;
 }
 .content p {
-  font-size: 1.2em;
+  font-size: 1em;
   color: firebrick;
+}
+.show_writer{
+    display: flex;
+    flex-direction: column;
+    align-self: flex-start;
+    align-items: center;
+    border: 1px solid black;
+}
+.show_writer ul{
+    list-style: none;
+    padding: 1em;
+    color: firebrick;
 }
 /*Message(Session)*/
 .message{
