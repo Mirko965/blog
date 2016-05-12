@@ -33,7 +33,7 @@
                 }
                 ?>
                 </ul>
-                <a href="new_text.php">Add new text ti this writer</a>
+                <a href="new_text.php?writer=<?php echo $current_writer["id"]; ?>">Add new text to this writer</a>
             </div>
             <?php }elseif($current_text){ ?>
             <h2>Menage Page</h2>
