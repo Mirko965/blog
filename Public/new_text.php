@@ -15,7 +15,7 @@ if (isset($_POST['submit'])) {
   // Process the form
 
   // validations
-  $required_fields = array("headline", "position", "visible", "content");
+  $required_fields = array("headline", "position","visible", "content");
   validate_presences($required_fields);
 
   $fields_with_max_lengths = array("headline" => 30);
@@ -29,11 +29,7 @@ if(empty($errors)){
     $visible = $_POST["visible"];
     $content = mysql_prep($_POST["content"]);
 
-    $query  = "INSERT INTO text (";
-    $query .= "  writer_id, headline, position, visible, content";
-    $query .= ") VALUES (";
-    $query .= "  {$writer_id}, '{$headline}', {$position}, {$visible}, '{$content}'";
-    $query .= ")";
+    $query  = "INSERT INTO text(writer_id,headline,position,visible,content) Values ({$writer_id},'{$headline}',{$position},{$visible},'{$content}')";
     $result = mysqli_query($dbconn,$query);
 
 if($result){
@@ -52,9 +48,12 @@ if($result){
 <?php include("../include/layout/header.php"); ?>
     <article class="main">
         <section class="content">
+        <?php echo message(); ?>
+        <?php echo form_errors($errors); ?>
+            <h2>Create text</h2>
         <form action="new_text.php?writer=<?php echo urlencode($current_writer["id"]); ?>" method="post">
-         <p>Menu name:
-          <input type="text" name="menu_name" value="" />
+         <p>Headline:
+          <input type="text" name="headline" value="" />
          </p>
           <p>Position:
         <select name="position">
@@ -75,7 +74,7 @@ if($result){
       <p>Content:<br />
         <textarea name="content" rows="20" cols="80"></textarea>
       </p>
-      <input type="submit" name="submit" value="Create Page" />
+      <input type="submit" name="submit" value="Create text" />
     </form>
             <br>
             <p><a href="main_page.php">Cancel</a></p>
