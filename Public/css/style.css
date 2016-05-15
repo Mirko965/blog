@@ -31,7 +31,7 @@ img {
 }
 .content p {
   font-size: 1em;
-  color: firebrick;
+  color: rgba(178, 34, 34, 0.56);
 }
 .show_writer{
     display: flex;
@@ -42,7 +42,7 @@ img {
 .show_writer ul{
     list-style: none;
     padding: 1em;
-    color: firebrick;
+    color: rgba(30, 31, 33, 0.43);
 }
 .show_text{
     display: flex;
@@ -50,13 +50,14 @@ img {
     align-self: flex-start;
     align-items: flex-start;
 }
-.show_text ul{
+
+.show_text ul {
     list-style: none;
     padding: 1em;
-    color: firebrick;
+    text-decoration: none;
 }
-.show_text ul a{
-    color: firebrick;
+.show_text ul a {
+    color:rgba(30, 31, 33, 0.43);
 }
 /*Message(Session)*/
 .message{
@@ -90,12 +91,12 @@ ul.writer {
   margin:1em 0;
   padding-left: 0.5em;;
   list-style: none;
-    font-size: 1.3em;
+    font-size: 1em;
 }
 ul.text {
   padding-left: 1em;
   list-style: none;
-    font-size: 0.6em;
+    font-size: .9em;
   font-weight: normal;
 }
 .selected {
