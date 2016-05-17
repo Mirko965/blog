@@ -74,7 +74,11 @@ if (isset($_POST['submit'])) {
                     $text_number = find_text_by_writer_id($current_text["writer_id"]);
                     $text_count = mysqli_num_rows($text_number);
                     for($count = 1; $count <= $text_count ; $count++){
-                      echo  "<option value=\"{$count}\">{$count}</option>";
+                      echo  "<option value=\"{$count}\"";
+                        if($current_text["position"] = $count ){
+                            echo "selected";
+                        }
+                      echo ">{$count}</option>";
                     }
                     ?>
                 </select>
