@@ -42,6 +42,7 @@
                          <li>position :<?php echo $current_text["position"]; ?></li>
                         <li>Content : <?php echo $current_text["content"]; ?></li>
                     </ul>
+                    <a href="edit_text.php?text=<?php echo urldecode($current_text["id"]);?>">Edit text</a>
                 </div>
                     <?php }else{ ?>
                     <!--<h2>Menage content</h2>-->
