@@ -29,14 +29,8 @@ if(isset($_POST["submit"])){
     $visible = $_POST["visible"];
     $content = $_POST["content"];
 
-    $query  = "INSERT INTO text VALUE" ;
-    $query .= "writer_id = {$writer_id}, ";
-    $query .= "headline = '{$headline}', ";
-    $query .= "position = {$position}, ";
-    $query .= "visible = {$visible}, ";
-    $query .= "content = '{$content}' ";
-
-    $result = mysqli_query($dbconn, $query);
+    $query  = "INSERT INTO text(writer_id,headline,position,visible,content) Values ({$writer_id},'{$headline}',{$position},{$visible},'{$content}')";
+    $result = mysqli_query($dbconn,$query);
 
     if($result){
         $_SESSION["message"] = "Text created";
