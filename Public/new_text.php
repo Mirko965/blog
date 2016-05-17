@@ -69,7 +69,7 @@ if($result){
       <p>Visible:
         <input type="radio" name="visible" value="0" /> No
         &nbsp;
-        <input type="radio" name="visible" value="1" /> Yes
+        <input type="radio" name="visible" value="1" checked /> Yes
       </p>
       <p>Content:<br />
         <textarea name="content" rows="20" cols="80"></textarea>
