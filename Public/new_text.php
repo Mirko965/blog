@@ -29,7 +29,11 @@ if(isset($_POST["submit"])){
     $visible = $_POST["visible"];
     $content = $_POST["content"];
 
-    $query  = "INSERT INTO text(writer_id,headline,position,visible,content) Values ({$writer_id},'{$headline}',{$position},{$visible},'{$content}')";
+    $query  = "INSERT INTO text (";
+    $query .= "  writer_id, headline, position, visible, content";
+    $query .= ") VALUES (";
+    $query .= "  {$writer_id}, '{$headline}', {$position}, {$visible}, '{$content}'";
+    $query .= ")";
     $result = mysqli_query($dbconn,$query);
 
     if($result){
