@@ -93,8 +93,8 @@ if (isset($_POST['submit'])) {
             <input type="submit" name="submit" value=" edit text" />
         </form>
             <br>
-            <p><a href="main_page.php?text=<?php echo urldecode($current_text["id"])?>">Cancel</a></p>
-            <p><a href="delete_text.php?text=<?php echo $current_text["id"]; ?>">Delete text</a></p>
+            <p><a href="main_page.php?text=<?php echo urldecode($current_text["id"])?>">Cancel</a>
+            <a href="delete_text.php?text=<?php echo $current_text["id"]; ?>">Delete text</a></p>
         </section>
           <aside role="navigation" id="navigation">
             <nav>
