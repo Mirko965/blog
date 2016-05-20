@@ -10,7 +10,7 @@
   </head>
   <body>
     <header id="header">
-      <h1>PHP </h1>
+      <h1>My Blog </h1>
       <img src="images/elephpant.png">
-      <h1>MYSQL</h1>
+      <h2>PHP & MYSQL</h1>
     </header>
