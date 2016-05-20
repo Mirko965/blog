@@ -78,31 +78,39 @@ img {
   background-color:#B7B7B7;
   margin: 0;
   color: #378ad0;
-  align-items: center;
+  align-items: flex-start;
 }
-#navigation a {
-  color: #180bac;
+#navigation a:link {
+  color: #1d0fa3;
   text-decoration: none;
+  font-size: 1.3em;
 }
-#navigation a:hover {
-  margin-right:2px;
-}
-ul.writer {
+.writer {
   margin:1em 0;
   padding-left: 0.5em;;
   list-style: none;
     font-size: 1em;
 }
+.writer a:hover{
+    color: #291906;
+}
 ul.text {
   padding-left: 1em;
   list-style: none;
-    font-size: .9em;
+    font-size: .7em;
   font-weight: normal;
 }
-.selected {
+.text a:hover {
+	text-decoration: underline;
+}
+.text a:active {
+	color: #0a6a6a;
+}
+.selected  {
   font-weight:  bold;
   list-style: none;
 }
+
 /*FOOTER*/
 footer {
   display: flex;
