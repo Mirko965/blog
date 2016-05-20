@@ -144,3 +144,44 @@ function navigation($writer_array,$text_array){
             $output .= "</ul>";
     return $output;
 }
+
+function public_navigation($writer_array,$text_array){
+
+            $output = "<ul class=\"writer\">" ;
+            $result_select_writer = find_all_writer();
+            while($writer_raw = mysqli_fetch_assoc($result_select_writer)){
+            $output .= "<li ";
+             if($writer_array && $writer_raw["id"] == $writer_array["id"]){
+            $output .= "class=\"selected\"";
+             }
+            $output .= ">";
+            $output .= "<a href=\"index.php?writer=";
+            $output .= $writer_raw["id"];
+            $output .= "\">";
+            $output .= $writer_raw["writer_name"];
+            $output .= "</a>";
+
+                if($writer_array["id"] == $writer_raw["id"] || $text_array["writer_id"] == $writer_raw["id"]){
+                $result_select_text = find_text_by_writer_id($writer_raw["id"]);
+                $output .= "<ul class=\"text\">";
+                    while($text_raw = mysqli_fetch_assoc($result_select_text)) {
+                    $output .= "<li ";
+                    if($text_array && $text_raw["id"] == $text_array["id"]){
+                    $output .= "class=\"selected\"";
+                    }
+                    $output .= ">";
+                    $output .= "<a href=\"index.php?text=";
+                    $output .= $text_raw["id"];
+                    $output .= "\">";
+                    $output .= $text_raw["headline"];
+                    $output .="</a></li>";
+                    }
+                    $output .= "</ul>";
+                    mysqli_free_result($result_select_text);
+                }
+                $output .= "</li>";
+            }
+               mysqli_free_result($result_select_writer);
+            $output .= "</ul>";
+    return $output;
+}
