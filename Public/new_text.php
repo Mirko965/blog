@@ -24,10 +24,10 @@ if(isset($_POST["submit"])){
     if(empty($errors)){
 
     $writer_id = $current_writer["id"];
-    $headline = $_POST["headline"];
+    $headline = mysql_prep($_POST["headline"]);
     $position = $_POST["position"];
     $visible = $_POST["visible"];
-    $content = $_POST["content"];
+    $content = mysql_prep($_POST["content"]);
 
     $query  = "INSERT INTO text (";
     $query .= "  writer_id, headline, position, visible, content";
