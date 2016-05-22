@@ -63,15 +63,17 @@ function find_writer_by_id($writer_id){
     }
 }
 
-function find_text_by_writer_id($writer_id){
+function find_text_by_writer_id($writer_id,$public = true){
     global $dbconn;
 
     $safe_writer_id = mysqli_real_escape_string($dbconn,$writer_id);
 
     $query_select_text  = "SELECT * " ;
     $query_select_text .= "FROM text " ;
-    $query_select_text .= "WHERE visible = 1 " ;
-    $query_select_text .= "AND writer_id = {$safe_writer_id} " ;
+    $query_select_text .= "WHERE writer_id = {$safe_writer_id} " ;
+    if($public){
+       $query_select_text .= "AND visible = 1 " ;
+    }
     $query_select_text .= "ORDER BY position ASC";
     $result_select_text = mysqli_query($dbconn, $query_select_text);
     confirm_query($result_select_text);
@@ -126,7 +128,7 @@ function navigation($writer_array,$text_array){
             $output .= $writer_raw["writer_name"];
             $output .= "</a>";
                 $output .= "<ul class=\"text\">";
-                $result_select_text = find_text_by_writer_id($writer_raw["id"]);
+                $result_select_text = find_text_by_writer_id($writer_raw["id"],$public=false);
                     while($text_raw = mysqli_fetch_assoc($result_select_text)) {
                     $output .= "<li ";
                     if($text_array && $text_raw["id"] == $text_array["id"]){
