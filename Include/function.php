@@ -31,12 +31,14 @@ function confirm_query($result_set){
     }
 }
 
-function find_all_writer(){
+function find_all_writer($public = true){
     global $dbconn;
 
     $query_select_writer  = "SELECT * " ;
     $query_select_writer .= "FROM writer ";
-    //$query_select_writer .= "WHERE visible = 1 ";
+    if($public){
+      $query_select_writer .= "WHERE visible = 1 ";
+    }
     $query_select_writer .= "ORDER BY position ASC";
     $result_select_writer = mysqli_query($dbconn, $query_select_writer);
     confirm_query($result_select_writer);
@@ -111,7 +113,7 @@ function find_selected_text(){
 
 function navigation($writer_array,$text_array){
             $output = "<ul class=\"writer\">" ;
-            $result_select_writer = find_all_writer();
+            $result_select_writer = find_all_writer(false);
             while($writer_raw = mysqli_fetch_assoc($result_select_writer)){
             $output .= "<li ";
              if($writer_array && $writer_raw["id"] == $writer_array["id"]){
