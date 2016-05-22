@@ -105,13 +105,17 @@ function find_default_text_for_writer($writer_id){
     }
 }
 
-function find_selected_text(){
+function find_selected_text($public = false){
     global $current_writer;
     global $current_text;
 
   if(isset($_GET["writer"])){
     $current_writer = find_writer_by_id($_GET["writer"]);
-    $current_text = find_default_text_for_writer($current_writer["id"]);
+      if($public){
+          $current_text = find_default_text_for_writer($current_writer["id"]);
+      }else{
+          null;
+      }
 }elseif(isset($_GET["text"])){
     $current_text = find_text_by_id($_GET["text"]);
     $current_writer = null;
