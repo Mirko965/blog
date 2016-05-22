@@ -1,6 +1,8 @@
 <?php require_once("../include/session.php"); ?>
 <?php require_once("../include/db_connection.php"); ?>
 <?php require_once("../include/function.php"); ?>
+
+<?php $layout_context = "public"; ?>
 <?php include("../include/layout/header.php"); ?>
 <?php find_selected_text(); ?>
     <article class="main">
