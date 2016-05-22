@@ -47,7 +47,7 @@ if(isset($_POST["submit"])){
 
 }
 ?>
-
+<?php $layout_context = "admin"; ?>
 <?php include("../include/layout/header.php"); ?>
 
     <article class="main">
