@@ -8,14 +8,14 @@
     <article class="main">
         <section class="content">
             <?php if($current_text){ ?>
-            <div class="show_writer">
+
              <h2><?php echo $current_text["headline"];?></h2>
                 <?php echo $current_text["content"];?>
                 <?php }else{ ?>
                 <!--<h2>Menage content</h2>-->
                 <h3>Welcome</h3>
                 <?php } ?>
-            </div>
+
         </section>
           <aside role="navigation" id="navigation">
             <nav>
