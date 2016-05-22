@@ -62,7 +62,7 @@ if (isset($_POST['submit'])) {
             <p>Position:
                 <select name="position" >
                     <?php
-                    $writer_number = find_all_writer();
+                    $writer_number = find_all_writer($public=false);
                     $writer_count = mysqli_num_rows($writer_number);
                     for($count = 1; $count <= $writer_count; $count++){
                       echo  "<option value=\"{$count}\"";
