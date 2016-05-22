@@ -96,13 +96,22 @@ function find_text_by_id($text_id){
     }
 }
 
+function find_default_text_for_writer($writer_id){
+    $text_set = find_text_by_writer_id($writer_id);
+    if($first_text = mysqli_fetch_assoc($text_set)){
+        return $first_text;
+    } else {
+        null;
+    }
+}
+
 function find_selected_text(){
     global $current_writer;
     global $current_text;
 
   if(isset($_GET["writer"])){
     $current_writer = find_writer_by_id($_GET["writer"]);
-    $current_text = null;
+    $current_text = find_default_text_for_writer($current_writer["id"]);
 }elseif(isset($_GET["text"])){
     $current_text = find_text_by_id($_GET["text"]);
     $current_writer = null;
