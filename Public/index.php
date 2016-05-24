@@ -9,7 +9,7 @@
         <section class="content">
             <?php if($current_text){ ?>
              <h2><?php echo $current_text["headline"];?></h2>
-                <?php echo $current_text["content"];?>
+                <?php echo nl2br(htmlentities($current_text["content"]));?>
                 <?php }else{ ?>
                 <!--<h2>Menage content</h2>-->
                 <h3>Welcome</h3>
