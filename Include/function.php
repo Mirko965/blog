@@ -45,7 +45,7 @@ function find_all_writer($public = true){
     return($result_select_writer);
 }
 
-function find_writer_by_id($writer_id){
+function find_writer_by_id($writer_id,$public=true){
     global $dbconn;
 
     $safe_writer_id = mysqli_real_escape_string($dbconn,$writer_id);
@@ -53,6 +53,9 @@ function find_writer_by_id($writer_id){
     $query_select_writer  = "SELECT * " ;
     $query_select_writer .= "FROM writer ";
     $query_select_writer .= "WHERE id = {$safe_writer_id} ";
+    if($public){
+       $query_select_writer .= "AND visible = 1 ";
+    }
     $query_select_writer .= "LIMIT 1";
     $result_select_writer = mysqli_query($dbconn, $query_select_writer);
     confirm_query($result_select_writer);
@@ -80,12 +83,15 @@ function find_text_by_writer_id($writer_id,$public = true){
     return($result_select_text);
 }
 
-function find_text_by_id($text_id){
+function find_text_by_id($text_id,$public=true){
     global $dbconn;
 
     $query_select_text  = "SELECT * " ;
     $query_select_text .= "FROM text ";
     $query_select_text .= "WHERE id = {$text_id} ";
+    if($public){
+        $query_select_text .= "AND visible = 1 ";
+    }
     $query_select_text .= "LIMIT 1";
     $result_select_text = mysqli_query($dbconn, $query_select_text);
     confirm_query($result_select_text);
@@ -110,14 +116,14 @@ function find_selected_text($public = false){
     global $current_text;
 
   if(isset($_GET["writer"])){
-    $current_writer = find_writer_by_id($_GET["writer"]);
-      if($public){
+    $current_writer = find_writer_by_id($_GET["writer"],$public);
+      if($current_writer && $public){
           $current_text = find_default_text_for_writer($current_writer["id"]);
       }else{
           null;
       }
 }elseif(isset($_GET["text"])){
-    $current_text = find_text_by_id($_GET["text"]);
+    $current_text = find_text_by_id($_GET["text"],$public);
     $current_writer = null;
 }else{
     $current_writer = null;
