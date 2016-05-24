@@ -3,7 +3,7 @@
 <?php require_once("../include/function.php"); ?>
 
 <?php
-$current_writer = find_writer_by_id($_GET["writer"]);
+$current_writer = find_writer_by_id($_GET["writer"],$public=false);
 if(!$current_writer){
     redirect_to("main_page.php");
 }
