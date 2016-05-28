@@ -45,6 +45,17 @@ function find_all_writer($public = true){
     return($result_select_writer);
 }
 
+function find_all_admins(){
+    global $dbconn;
+
+    $query_admin  = "SELECT * " ;
+    $query_admin .= "FROM admins ";
+    $query_admin .= "ORDER BY username ASC";
+    $result_admin = mysqli_query($dbconn, $query_admin);
+    confirm_query($result_admin);
+    return($result_admin);
+}
+
 function find_writer_by_id($writer_id,$public=true){
     global $dbconn;
 
@@ -61,6 +72,24 @@ function find_writer_by_id($writer_id,$public=true){
     confirm_query($result_select_writer);
     if($writer = mysqli_fetch_assoc($result_select_writer)){
         return $writer;
+    } else {
+        null;
+    }
+}
+
+function find_admin_by_id($admin_id){
+    global $dbconn;
+
+    $safe_admin_id = mysqli_real_escape_string($dbconn,$admin_id);
+
+    $query_admin_id  = "SELECT * " ;
+    $query_admin_id .= "FROM admins ";
+    $query_admin_id .= "WHERE id = {$safe_admin_id} ";
+    $query_admin_id .= "LIMIT 1";
+    $result_select_writer = mysqli_query($dbconn, $query_admin_id);
+    confirm_query($result_admin_id);
+    if($admin = mysqli_fetch_assoc($result_admin_id)){
+        return $admin;
     } else {
         null;
     }
