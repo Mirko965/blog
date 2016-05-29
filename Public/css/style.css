@@ -141,6 +141,24 @@ footer {
     background-repeat: no-repeat;
   }
 
+/*table*/
+table{
+    width: 50%
+}
+table, th, td {
+    border: 1px solid black;
+    border-collapse: collapse;
+    text-align: center;
+}
+th, td {
+    padding: 5px;
+    background-color: #f2b53b;
+}
+th{
+    background-color: black;
+    color: aliceblue;
+}
+
 
 @media (max-width: 800px) {
   .main {
