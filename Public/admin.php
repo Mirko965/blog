@@ -8,7 +8,7 @@
             <p>Welcome to admin area</p>
             <ul>
             <li><a href="main_page.php">Menage website content</a></li>
-            <li><a href="admin.php">Menage admin users</a></li>
+            <li><a href="menage_admin.php">Menage admin users</a></li>
             <li><a href="">logout</a></li>
             </ul>
         </section>
