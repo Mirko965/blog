@@ -15,7 +15,7 @@
                 <input type="text" name="username" value=""  >
             </p>
             <p>Password:
-                <input type="text" name="hashed_password" value=""  >
+                <input type="text" name="password" value=""  >
             </p>
 
             <input type="submit" name="submit" value="create new admin" />
