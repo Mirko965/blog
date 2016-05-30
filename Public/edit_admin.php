@@ -2,27 +2,36 @@
 <?php require_once("../include/db_connection.php"); ?>
 <?php require_once("../include/function.php"); ?>
 <?php require_once("../include/validation_function.php"); ?>
+<?php confirm_logged_in(); ?>
 
 <?php
-$admin = find_admin_by_id($_GET["id"]);
+  $admin = find_admin_by_id($_GET["id"]);
 
-if(!$admin){
-    redirect_to("menage_admin.php");
-}
+  if (!$admin) {
+    // admin ID was missing or invalid or
+    // admin couldn't be found in database
+    redirect_to("manage_admin.php");
+  }
 ?>
+
 <?php
 if (isset($_POST['submit'])) {
+  // Process the form
 
-    $required_fields = array("username","password");
-    validate_presences($required_fields);
+  // validations
+  $required_fields = array("username", "password");
+  validate_presences($required_fields);
 
-    $fields_with_max_lengths = array("username" => 30);
-    validate_max_lengths($fields_with_max_lengths);
+  $fields_with_max_lengths = array("username" => 30);
+  validate_max_lengths($fields_with_max_lengths);
 
-    if(empty($errors)){
-       $id = $admin["id"];
-	   $username = mysql_prep($_POST["username"]);
-	   $hashed_password = $_POST["password"];
+  if (empty($errors)) {
+
+    // Perform Update
+
+    $id = $admin["id"];
+    $username = mysql_prep($_POST["username"]);
+    $hashed_password = password_encrypt($_POST["password"]);
 
     $query  = "UPDATE admins SET ";
     $query .= "username = '{$username}', ";
@@ -31,16 +40,21 @@ if (isset($_POST['submit'])) {
     $query .= "LIMIT 1";
     $result = mysqli_query($dbconn, $query);
 
-	if ($result && mysqli_affected_rows($dbconn) == 1) {
-        $_SESSION["message"] = "Admin updated";
-		redirect_to("menage_admin.php");
-	} else {
-		$message = "Admin update failed";
-	}
-    }
+    if ($result && mysqli_affected_rows($dbconn) == 1) {
+      // Success
+      $_SESSION["message"] = "Admin updated.";
+      redirect_to("manage_admins.php");
     } else {
-
+      // Failure
+      $_SESSION["message"] = "Admin update failed.";
     }
+
+  }
+} else {
+  // This is probably a GET request
+
+} // end: if (isset($_POST['submit']))
+
 ?>
  <?php $layout_context = "admin"; ?>
 <?php include("../include/layout/header.php"); ?>
@@ -48,7 +62,6 @@ if (isset($_POST['submit'])) {
     <article class="main">
         <section class="content">
         <?php echo message(); ?>
-        <?php $errors = errors(); ?>
         <?php echo form_errors($errors) ; ?>
 
         <h2>Edit Admin: <?php echo $admin["username"];?></h2>
