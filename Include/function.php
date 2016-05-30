@@ -86,7 +86,7 @@ function find_admin_by_id($admin_id){
     $query_admin_id .= "FROM admins ";
     $query_admin_id .= "WHERE id = {$safe_admin_id} ";
     $query_admin_id .= "LIMIT 1";
-    $result_select_writer = mysqli_query($dbconn, $query_admin_id);
+    $result_admin_id = mysqli_query($dbconn, $query_admin_id);
     confirm_query($result_admin_id);
     if($admin = mysqli_fetch_assoc($result_admin_id)){
         return $admin;
