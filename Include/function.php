@@ -80,7 +80,7 @@ function find_writer_by_id($writer_id,$public=true){
 function find_admin_by_id($admin_id){
 		global $dbconn;
 
-		$safe_admin_id = mysqli_real_escape_string($dbconn, $admin_id);
+		$safe_admin_id = mysqli_real_escape_string($dbconn,$admin_id);
 
 		$query  = "SELECT * ";
 		$query .= "FROM admins ";
