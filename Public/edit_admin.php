@@ -2,7 +2,7 @@
 <?php require_once("../include/db_connection.php"); ?>
 <?php require_once("../include/function.php"); ?>
 <?php require_once("../include/validation_function.php"); ?>
-<?php confirm_logged_in(); ?>
+
 
 <?php
   $admin = find_admin_by_id($_GET["id"]);
