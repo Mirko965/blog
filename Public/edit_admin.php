@@ -70,7 +70,7 @@ if (isset($_POST['submit'])) {
                 <input type="text" name="username" value="<?php echo $admin["username"];?>"  >
             </p>
             <p>Password:
-                <input type="text" name="password" value="<?php echo $admin["hashed_password"];?>"  >
+                <input type="password" name="password" value=""  >
             </p>
 
             <input type="submit" name="submit" value="edit admin" />
