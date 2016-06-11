@@ -21,7 +21,7 @@
             <input type="submit" name="submit" value="create new admin" />
         </form>
             <br>
-            <p><a href="main_page.php">Cancel</a></p>
+            <p><a href="menage_admin.php">Cancel</a></p>
 
         </section>
           <aside role="navigation" id="navigation">
