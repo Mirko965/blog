@@ -95,7 +95,7 @@ function find_admin_by_id($admin_id){
 		}
 }
 
-function find_sdmin_by_username($username){
+function find_admin_by_username($username){
 		global $dbconn;
 
 		$safe_admin_username = mysqli_real_escape_string($dbconn,$username);
@@ -257,16 +257,17 @@ function public_navigation($writer_array,$text_array){
 }
 
 
-function password_encrypt($password){
-    $hash_format = "$2y$10$";
-    $salt_length = 22;
-    $salt = generate_salt($salt_length);
-    $format_and_salt = $hash_format . $salt;
-    $hash = crypt($password,$format_and_salt);
-    return $hash;
-}
-function generate_salt($length){
-    	  // Not 100% unique, not 100% random, but good enough for a salt
+	function password_encrypt($password) {
+  	$hash_format = "$2y$10$";   // Tells PHP to use Blowfish with a "cost" of 10
+	  $salt_length = 22; 					// Blowfish salts should be 22-characters or more
+	  $salt = generate_salt($salt_length);
+	  $format_and_salt = $hash_format . $salt;
+	  $hash = crypt($password, $format_and_salt);
+		return $hash;
+	}
+
+	function generate_salt($length) {
+	  // Not 100% unique, not 100% random, but good enough for a salt
 	  // MD5 returns 32 characters
 	  $unique_random_string = md5(uniqid(mt_rand(), true));
 
@@ -280,8 +281,9 @@ function generate_salt($length){
 	  $salt = substr($modified_base64_string, 0, $length);
 
 		return $salt;
-}
-function password_check($password, $existing_hash) {
+	}
+
+	function password_check($password, $existing_hash) {
 		// existing hash contains format and salt at start
 	  $hash = crypt($password, $existing_hash);
 	  if ($hash === $existing_hash) {
@@ -291,16 +293,19 @@ function password_check($password, $existing_hash) {
 	  }
 	}
 
-
-function attempt_login($username,$password){
-    $admin = find_sdmin_by_username($username);
-    if($admin){
-        if(password_check($password, $admin["hashed_password"])){
-            return $admin;
-        } else {
-            return false;
-        }
-    } else {
-        return false;
+	function attempt_login($username, $password) {
+		$admin = find_admin_by_username($username);
+		if ($admin) {
+			// found admin, now check password
+			if (password_check($password, $admin["hashed_password"])) {
+				// password matches
+				return $admin;
+			} else {
+				// password does not match
+				return false;
+			}
+		} else {
+			// admin not found
+			return false;
+		}
     }
-}
