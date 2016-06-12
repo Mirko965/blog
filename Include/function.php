@@ -95,6 +95,24 @@ function find_admin_by_id($admin_id){
 		}
 }
 
+function find_sdmin_by_username($username){
+		global $dbconn;
+
+		$safe_admin_username = mysqli_real_escape_string($dbconn,$username);
+
+		$query  = "SELECT * ";
+		$query .= "FROM admins ";
+		$query .= "WHERE username = '{$safe_admin_username}' ";
+		$query .= "LIMIT 1";
+		$admin_set = mysqli_query($dbconn, $query);
+		confirm_query($admin_set);
+		if($admin = mysqli_fetch_assoc($admin_set)) {
+			return $admin;
+		} else {
+			return null;
+		}
+}
+
 function find_text_by_writer_id($writer_id,$public = true){
     global $dbconn;
 
@@ -272,3 +290,17 @@ function password_check($password, $existing_hash) {
 	    return false;
 	  }
 	}
+
+
+function attempt_login($username,$password){
+    $admin = find_sdmin_by_username($username);
+    if($admin){
+        if(password_check($password, $admin["hashed_password"])){
+            return $admin;
+        } else {
+            return false;
+        }
+    } else {
+        return false;
+    }
+}
