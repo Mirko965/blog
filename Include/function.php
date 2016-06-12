@@ -263,7 +263,7 @@ function generate_salt($length){
 
 		return $salt;
 }
-	function password_check($password, $existing_hash) {
+function password_check($password, $existing_hash) {
 		// existing hash contains format and salt at start
 	  $hash = crypt($password, $existing_hash);
 	  if ($hash === $existing_hash) {
