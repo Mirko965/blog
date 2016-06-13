@@ -3,7 +3,6 @@
 <?php require_once("../include/function.php"); ?>
 <?php require_once("../include/validation_function.php"); ?>
 
-<?php confirm_logged_in() ?>
 
 <?php
 $username = "";
@@ -48,7 +47,7 @@ if (isset($_POST['submit'])) {
     <?php echo form_errors($errors); ?>
             <h2>Login</h2>
 
-        <form action="login.php" method="post">
+        <form action="loggin.php" method="post">
             <p>Username:
                 <input type="text" name="username" value="<?php echo $username;?> "  >
             </p>

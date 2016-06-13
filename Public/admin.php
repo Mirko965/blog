@@ -3,6 +3,8 @@
 <?php $layout_context = "admin"; ?>
 <?php include("../include/layout/header.php"); ?>
 
+<?php confirm_logged_in() ?>
+
     <article class="main">
         <section class="content">
         <h2>Admin Menu</h2>

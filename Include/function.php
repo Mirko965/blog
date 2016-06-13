@@ -311,6 +311,6 @@ function public_navigation($writer_array,$text_array){
 	}
     function confirm_logged_in() {
 		if (!logged_in()) {
-			redirect_to("login.php");
+			redirect_to("loggin.php");
 		}
 	}
