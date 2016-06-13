@@ -104,9 +104,9 @@ function find_admin_by_username($username){
 		$query .= "FROM admins ";
 		$query .= "WHERE username = '{$safe_admin_username}' ";
 		$query .= "LIMIT 1";
-		$admin_set = mysqli_query($dbconn, $query);
-		confirm_query($admin_set);
-		if($admin = mysqli_fetch_assoc($admin_set)) {
+		$result = mysqli_query($dbconn, $query);
+		confirm_query($result);
+		if($admin = mysqli_fetch_assoc($result)) {
 			return $admin;
 		} else {
 			return null;
@@ -265,7 +265,6 @@ function public_navigation($writer_array,$text_array){
 	  $hash = crypt($password, $format_and_salt);
 		return $hash;
 	}
-
 	function generate_salt($length) {
 	  // Not 100% unique, not 100% random, but good enough for a salt
 	  // MD5 returns 32 characters
@@ -282,7 +281,6 @@ function public_navigation($writer_array,$text_array){
 
 		return $salt;
 	}
-
 	function password_check($password, $existing_hash) {
 		// existing hash contains format and salt at start
 	  $hash = crypt($password, $existing_hash);
@@ -292,7 +290,6 @@ function public_navigation($writer_array,$text_array){
 	    return false;
 	  }
 	}
-
 	function attempt_login($username, $password) {
 		$admin = find_admin_by_username($username);
 		if ($admin) {
@@ -309,3 +306,11 @@ function public_navigation($writer_array,$text_array){
 			return false;
 		}
     }
+	function logged_in() {
+		return isset($_SESSION['admin_id']);
+	}
+    function confirm_logged_in() {
+		if (!logged_in()) {
+			redirect_to("login.php");
+		}
+	}

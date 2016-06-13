@@ -3,6 +3,8 @@
 <?php require_once("../include/function.php"); ?>
 <?php require_once("../include/validation_function.php"); ?>
 
+<?php confirm_logged_in() ?>
+
 <?php
 $username = "";
 
