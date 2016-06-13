@@ -32,7 +32,7 @@ $admin_set = find_all_admins();
         </section>
           <aside role="navigation" id="navigation">
             <nav>
-
+              <a href="admin.php">Back to admin page</a>
             </nav>
           </aside>
     </article>

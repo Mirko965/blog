@@ -59,6 +59,7 @@
                 echo navigation($current_writer,$current_text)
              ?>
                 <p><a href="new_writer.php">+ Add new writer</a></p>
+                <p><a href="admin.php">Admin page</a></p>
             </nav>
           </aside>
     </article>
